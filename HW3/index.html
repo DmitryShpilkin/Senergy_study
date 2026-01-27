@@ -1,11 +1,83 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+
+    <!--  Ссылка на подключение CSS
+      Вставлять нужно в head
+      rel и href- обязательные атрибуты, т.к. rel указывает на формат файла, href указывать путь к самому файлу
+      без них CSS не подключится
+    <link rel="stylesheet" href="style.css"> -->
+
+    <title>Домашнее задание</title>
 </head>
+
 <body>
-    
+    <header>
+        <h1>Любителям цветов</h1>
+        <nav>
+            <a href="#about">Немного о цветах</a>
+            <a href="#photo">Фото</a>
+            <a href="#contacts">Контакты</a>
+        </nav>
+    </header>
+
+    <main>
+        <section>
+            <article id="about">
+                <h2>Немного о цветах</h2>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis hic aperiam a nisi nemo eum distinctio
+                    quaerat, quia at id neque molestiae. Numquam, tempore obcaecati. Quos ab minus error ipsam dolore
+                    eos. Quo, nam. Sapiente repudiandae numquam dolores adipisci et delectus ipsa officia commodi eius
+                    rem eligendi nihil similique atque quo in voluptas maxime possimus vero, sed, aliquam, veniam ipsam
+                    facere? Magnam eaque autem cum vel, nostrum et nemo esse! Laudantium dignissimos beatae aliquid
+                    doloribus.
+                    <!-- Использовал тег time для указания времени события, выделенного тегом mark -->
+                    <time datetime="2014-09-28 19:00">28 september</time> <mark>Temporibus id, sint quidem
+                        saepe, at non quibusdam deserunt quis dignissimos cumque
+                        impedit soluta doloremque asperiores quo libero delectus ipsa.</mark> Reprehenderit, alias
+                    quisquam
+                    asperiores hic eaque numquam suscipit deserunt veniam reiciendis laudantium illum illo ipsum
+                    excepturi voluptatem eveniet voluptas cupiditate! Similique explicabo nam possimus soluta quod ad
+                    odio cumque dolore qui nobis, aut obcaecati accusantium iusto in velit eius, sunt quidem ducimus
+                    ipsum ex veritatis! Repellendus excepturi nobis inventore nulla voluptates nesciunt, rem labore non
+                    placeat voluptatibus quis nam! Totam corrupti quod qui voluptatum officiis accusamus aspernatur vel
+                    voluptatem assumenda, eos repellendus sunt ut, molestiae fugiat. Exercitationem sint quas fugiat
+                    pariatur natus blanditiis eum veniam laborum ab magnam illo, sed fugit repellendus sapiente
+                    distinctio officia officiis dicta saepe modi tempora autem aspernatur recusandae. Iure, doloremque?
+                </p>
+            </article>
+        </section>
+
+        <article id="photo">
+            <figure>
+                <!-- Устанавливаем высоту и ширину картинки для "бронирования" места при загрузке страницы
+                loading="lazy"- для прогрузки только видимых картинок на странице -->
+                <img src="flower.jpg" alt="" width="800" height="500" loading="lazy">
+                <figcaption>Фото цветов</figcaption>
+            </figure>
+
+            <aside>
+                <a href="https://yandex.ru/images/search?img_url=https%3A%2F%2Fi.pinimg.com%2F736x%2Fdb%2Fa4%2Fb2%2Fdba4b2c104647db86d532532a411679e.jpg&lr=10867&pos=16&rpt=simage&source=serp&stype=image&text=фото%20цветов%20красивые"
+                    target="_blank">Фото цветов в Яндекс-картинках</a>
+                <a href="https://yandex.ru/images/search?img_url=https%3A%2F%2Fi.pinimg.com%2Foriginals%2Fe2%2F07%2F3b%2Fe2073b444a15279d7d0ea73baadc6b56.jpg&lr=10867&pos=18&rpt=simage&source=serp&stype=image&text=фото%20цветов%20красивые"
+                    target="_blank">Фото цветов в Яндекс-картинках</a>
+                <a href="page-1.html">Тестовая страница 1</a>
+                <a href="page-2.html">Тестовая страница 2</a>
+            </aside>
+        </article>
+    </main>
+
+    <footer id="contacts">
+        <div>
+            <h2>Наши контакты</h2>
+            <a href="tel:+79991234567">Телефон: +7(999)123-45-67</a>
+            <a href="email:example@exemple.ru">Почта: example@exemple.ru</a>
+            <p>Адрес: Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti, mollitia.</p>
+        </div>
+    </footer>
 </body>
+
 </html>
