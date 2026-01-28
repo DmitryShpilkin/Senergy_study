@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- Подключение внешнего CSS-файла с помощью ссылки -->
+    <link rel="stylesheet" href="css/style.css">
+
+    <title>Создание таблиц</title>
+</head>
+
+<body>
+    <style>
+        th {
+            background: #8ed817;
+        }
+
+        td {
+            background: #6589ec;
+        }
+
+        table {
+            width: 100%;
+            height: 300px;
+            border: 2px solid black;
+        }
+
+        table thead {
+            height: 75px;
+        }
+
+        table tfoot {
+            height: 40px;
+        }
+    </style>
+
+    <table>
+        <caption>Сводная таблица населения стран</caption>
+        <thead>
+            <!-- rowspan использовал для объединения 1-ой и 2-ой строки
+              colspan использовал для объединения 2-го с 3-им и 4-го с 5-ым столбцоми в 1-ой строке -->
+            <tr>
+                <th rowspan="2">Название страны</th>
+                <th colspan="2">Население млн. чел.</th>
+                <th colspan="2">Плотность чел. на кв. км.</th>
+                <th rowspan="2">Площадь млн. кв. км</th>
+            </tr>
+            <tr>
+                <th>1970 г</th>
+                <th>1989 г</th>
+                <th>1970 г</th>
+                <th>1989 г</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <tr>
+                <th>Австралия и Океания</th>
+                <td>19</td>
+                <td>26</td>
+                <td>2</td>
+                <td>3</td>
+                <td>8,5</td>
+            </tr>
+            <tr>
+                <th>Африка</th>
+                <td>361</td>
+                <td>628</td>
+                <td>12</td>
+                <td>21</td>
+                <td>30,3</td>
+            </tr>
+            <tr>
+                <th>Европа</th>
+                <td>642</td>
+                <td>701</td>
+                <td>61</td>
+                <td>67</td>
+                <td>10,5</td>
+            </tr>
+            <tr>
+                <th>Южная Америка</th>
+                <td>190</td>
+                <td>291</td>
+                <td>11</td>
+                <td>16</td>
+                <td>17,8</td>
+            </tr>
+            <tr>
+                <th>Северная и Центральная Америка</th>
+                <td>320</td>
+                <td>422</td>
+                <td>13</td>
+                <td>17</td>
+                <td>24,3</td>
+            </tr>
+            <tr>
+                <th>Азия</th>
+                <td>2161</td>
+                <td>3133</td>
+                <td>49</td>
+                <td>71</td>
+                <td>44,4</td>
+            </tr>
+        </tbody>
+
+        <tfoot>
+            <tr>
+                <th>Весь мир</th>
+                <td>3693</td>
+                <td>5201</td>
+                <td>27</td>
+                <td>38</td>
+                <td>135,8</td>
+            </tr>
+        </tfoot>
+    </table>
+
+    <!-- Оригинал таблицы -->
+    <img src="image/table.jpg" alt="образец таблицы" width="800" height="400">
+</body>
+
+</html>
