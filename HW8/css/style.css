@@ -1,0 +1,58 @@
+/* Стилизацию можно менять как угодно с помощью атрибутов CSS
+   Можно делать рамки, устанавливать размеры, цвета и т.п.*/
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+h1 {
+    color: #333;
+    text-align: center;
+}
+
+/* Стилизация видео */
+video {
+    display: block;
+    margin: 0 auto;
+    border-radius: 10px;
+    max-width: 100%;
+}
+
+/* Стилизация аудио-плеера */
+audio {
+    display: block;
+    margin: 20px auto;
+    padding: 10px;
+    background-color: #fff;
+    border-radius: 10px;
+    text-align: center;
+}
+
+/* Оформление для тега <figure> */
+figure {
+    text-align: center;
+    margin: 0;
+}
+
+/* Оформление для видео и аудио */
+video,
+audio {
+    width: 100%;
+    max-width: 640px;
+    border-radius: 10px;
+}
+
+/* Оформление для подписи (figcaption) */
+figcaption {
+    font-style: italic;
+    color: #666;
+    margin-top: 10px;
+}
+
+/* Установка видимой рамки и её скругление*/
+iframe {
+    border: 2px solid black;
+    border-radius: 10px;
+}
+

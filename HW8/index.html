@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <title>Пример документа с мультимедиа</title>
+</head>
+
+<body>
+
+
+    <h1>Мультимедийные элементы с описанием и дополнительной настройкой</h1>
+
+    <div class="media-container">
+        <figure>
+            <video width="640" height="360" controls poster="video/forest.jpg" crossorigin="anonymous"
+                preload="metadata">
+                <source src="video/sample-20s.mp4" type="video/mp4">
+                <source src="video/sample-20s.webm" type="video/webm">
+                <p>Ваш браузер не поддерживает данный формат видео. Обновите версию браузера.</p>
+            </video>
+            <figcaption>Демонстрационное видео с летним лесом.</figcaption>
+        </figure>
+    </div>
+
+    <div class="media-container">
+        <figure>
+            <!-- crossorigin: применяется для обработки междоменных запросов. Он полезен, если ваше приложение взаимодействует с внешним источником. Используйется, если загружаете контент с другого сервера
+             preload: определяет стратегию предварительной загрузки мультимедийного контента. Выбор стратегии загрузки важен для оптимизации скорости загрузки страницы и расхода трафика.  -->
+            <audio controls loop crossorigin="anonymous" preload="auto">
+                <source src="audio/living-summer-morning-forest.mp3" type="audio/mp3">
+                <source src="audio/living-summer-morning-forest.wav" type="audio/wav">
+                <p>Ваш браузер не поддерживает данный формат аудио. Обновите версию браузера.</p>    
+            </audio>
+            <figcaption>Звуковое сопровождение природы с птичьими трелями.</figcaption>
+        </figure>
+    </div>
+
+    <div class="media-container">
+        <figure>
+           <div style="position:relative;overflow:hidden;"><a href="https://yandex.ru/maps/213/moscow/?utm_medium=mapframe&utm_source=maps" style="color:#eee;font-size:12px;position:absolute;top:0px;">Москва</a><a href="https://yandex.ru/maps/213/moscow/geo/krasnaya_ploshchad/1520633025/?indoorLevel=1&ll=37.620941%2C55.753575&utm_medium=mapframe&utm_source=maps&z=17" style="color:#eee;font-size:12px;position:absolute;top:14px;">Красная площадь в Москве — Яндекс Карты</a><iframe src="https://yandex.ru/map-widget/v1/?indoorLevel=1&ll=37.620941%2C55.753575&mode=search&ol=geo&ouri=ymapsbm1%3A%2F%2Fgeo%3Fdata%3DCgoxNTIwNjMzMDI1EjnQoNC-0YHRgdC40Y8sINCc0L7RgdC60LLQsCwg0JrRgNCw0YHQvdCw0Y8g0L_Qu9C-0YnQsNC00YwiCg0dfBZCFaIDX0I%2C&z=17" width="560" height="400" frameborder="1" allowfullscreen="true" style="position:relative;"></iframe></div>
+            <figcaption>Интерактивная карта центра Москвы с Красной площадью.</figcaption>
+        </figure>
+    </div>
+
+</body>
+
+</html>
