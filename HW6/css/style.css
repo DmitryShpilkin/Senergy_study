@@ -1,0 +1,35 @@
+/* Сброс настроек браузера */
+* {
+    margin: 0;
+    padding: 0;
+}
+
+/* Кнопки отправки */
+button,
+input[type="submit"] {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    border-radius: 4px;
+    margin-top: 5px;
+}
+
+/* Размер шрифта для legend */
+legend {
+    font-size: 25px;
+}
+
+/* Убираем рамку вокруг fieldset */
+fieldset {
+    border: none;
+}
+
+/* Пример класса */
+.search {
+    margin: 10px;
+    padding: 10px;
+    border-color: red !important;
+    background: #ddd7d7;
+}
