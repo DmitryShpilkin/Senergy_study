@@ -1,0 +1,32 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+h1 {
+    font-family: 'Times New Roman', Times, serif;
+    color: blue;
+    font-style: oblique;
+}
+
+h2 {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    color: blueviolet;
+    font-size: 50px;
+}
+
+p {
+    margin: 20px 30px;
+    background: #10c95d;
+    border: 3px solid rgb(15, 11, 6);
+}
+
+ol {
+    padding-left: 20px;
+    padding-top: 20px;
+}
+
+ol li{
+    color: rgb(165, 11, 75);
+    text-decoration: underline;
+}
