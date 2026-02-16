@@ -1,0 +1,140 @@
+/* Общие стили */
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    color: #333;
+    padding: 20px;
+}
+
+/* Шапка страницы */
+h1 {
+    text-align: center;
+    color: #ff6b6b;
+    margin-bottom: 20px;
+}
+
+/* Основные стили для основной секции */
+.main-section {
+    max-width: 800px;
+    background-color: white;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0,0,0,.1);
+}
+
+/* Раздел с первым параграфом */
+.parag {
+    /*Ширина и высота элемента начинают включать в себя сразу содержимое, границу и внутренние отступы*/
+    box-sizing: border-box;
+    padding: 20px;
+    background-color: #fdfdfd;
+    border-radius: 5px;
+    margin-bottom: 20px;
+}
+
+/*Элемент отображается внутри потока текста*/
+.inline-span {
+    display: inline; /* Встроенное отображение по умолчанию */
+    padding: 10px;
+    margin-right: 10px;
+}
+
+/* Настройка флекс-контейнера */
+/*Управляет позицией и ориентацией дочерних элементов с помощью свойств вроде justify-content, align-items, flex-wrap и других*/
+.flex-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: start;
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+.flex-item {
+    flex-grow: 1;
+    padding: 20px;
+    background-color: #fefefe;
+    border-radius: 5px;
+    box-shadow: 0 0 5px rgba(0,0,0,.1);
+}
+
+/* Форма отправки сообщений */
+.form-section {
+    margin-bottom: 20px;
+}
+
+.form-section label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.form-section input, .form-section textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.form-section button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+/* Пример grid layout */
+.grid-section {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+.grid-item {
+    padding: 20px;
+    background-color: #fefefe;
+    border-radius: 5px;
+    box-shadow: 0 0 5px rgba(0,0,0,.1);
+}
+
+/* Декорация цитаты */
+blockquote {
+    font-style: italic;
+    color: #666;
+    margin: 20px 0;
+    padding: 10px;
+    border-left: 5px solid #007bff;
+}
+
+blockquote cite {
+    display: block;
+    font-size: 0.8em;
+    color: #aaa;
+    margin-top: 10px;
+}
+
+/* Классы для наглядности отступов, полей и границ */
+.padding-demo {
+    padding: 20px;
+    background-color: lightyellow;
+    border: 5px dashed blue;
+}
+
+.margin-demo {
+    margin: 20px;
+    background-color: lightgreen;
+    border: 5px dotted red;
+}
+
+.border-demo {
+    border: 5px solid purple;
+    background-color: lightsalmon;
+}

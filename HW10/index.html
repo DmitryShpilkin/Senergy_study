@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Отступы, поля, свойство display</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <h1>Домашнее задание к уроку "Отступы, поля, свойство display"</h1>
+
+    <!-- Основная секция -->
+    <section class="main-section">
+        <div class="parag">
+            <p>Далеко-далеко за словесными горами в стране гласных и согласных живут рыбные тексты...<span class="inline-span"><mark>это встроенный элемент</mark></span>трампарам</p>
+             
+        </div>
+
+        <!-- Пример padding -->
+        <div class="padding-demo">
+            <p>Отступы (padding) сдвигают содержимое внутрь элемента.</p>
+        </div>
+
+        <!-- Пример margin -->
+        <div class="margin-demo">
+            <p>Внешние поля (margin) создают пространство снаружи элемента.</p>
+        </div>
+
+        <!-- Пример border -->
+        <div class="border-demo">
+            <p>Границы (border) очерчивают края элемента.</p>
+        </div>
+
+        <!-- Флекс-контейнер -->
+        <div class="flex-container">
+            <div class="flex-item"><h2>Список</h2>
+                <ol>
+                    <li>Пункт 1</li>
+                    <li>Пункт 2</li>
+                    <li>Пункт 3</li>
+                    <li>Пункт 4</li>
+                    <li>Пункт 5</li>
+                </ol>
+            </div>
+            
+            <div class="flex-item">
+                <h2>Заголовок второго уровня</h2>
+                <p>Далеко-далеко за словесными горами в стране гласных и согласных живут рыбные тексты...</p>
+            </div>
+        </div>
+
+        <!-- Формы -->
+        <section class="form-section">
+            <form action="#">
+                <label for="name">ФИО:</label>
+                <input type="text" id="name" placeholder="ФИО" required>
+                
+                <label for="subject">Тема обращения:</label>
+                <input type="text" id="subject" placeholder="Тема обращения" required>
+                
+                <label for="message">Ваше сообщение:</label>
+                <textarea id="message" rows="4" cols="50" placeholder="Введите ваше сообщение"></textarea>
+                
+                <button type="submit">Отправить</button>
+            </form>
+        </section>
+
+        <!-- Секция с примером grid layout -->
+        <section class="grid-section">
+            <div class="grid-item">
+                <h3>Заголовок третьего уровня</h3>
+                <p>Далеко-далеко за словесными горами в стране гласных и согласных живут рыбные тексты...</p>
+            </div>
+            <div class="grid-item">
+                <h4>Заголовок четвёртого уровня</h4>
+                <p>Далеко-далеко за словесными горами в стране гласных и согласных живут рыбные тексты...</p>
+                <blockquote>
+                    <p>Своим успехом я обязана тому, что никогда не оправдывалась и не принимала оправданий от других.</p>
+                    <cite>Флоренс Найтингейл, первая исследовательница и основоположница современного сестринского дела</cite>
+                </blockquote>
+            </div>
+        </section>
+    </section>
+
+    <img src="assets/images/2026-02-16_19-08-18.png" alt="">
+</body>
+</html>
