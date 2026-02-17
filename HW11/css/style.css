@@ -1,0 +1,93 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+/* устанавливаем размер шрифта корневого элемента */
+html {
+    font-size: 10px;
+}
+
+/* устанавливаем размер шрифта контейнера относительно размера шрифта корневого элемента */
+.container {
+    font-size: 2rem;
+}
+
+.container h1 {
+    margin: 0 auto;
+    padding: 20px 15px;
+    /* устанавливаем размер шрифта заголовка относительно размера шрифта родительского элемента */
+    font-size: 3em;
+    color: blue;
+    text-align: center;
+    text-decoration: underline;
+}
+
+.paragraph p {
+    margin: 15px;
+    padding: 10px;
+    /* высота элемента будет всегда равна 50% высоты экрана*/
+    height: 50vh;
+}
+
+.parag p {
+    margin: 15px;
+    padding: 10px;
+     /* ширина элемента будет всегда равна 80% ширины экрана*/
+    width: 80vw;
+}
+
+.quote {
+    margin: 10px;
+    padding: 10px;
+    animation-name: rotateQuote;
+    animation-duration: 10s; /* Продолжительность анимации */
+    animation-timing-function: linear; /* Скорость воспроизведения */
+    animation-iteration-count: 1; /* Повторение 1 раз */
+}
+
+/* Контейнер с текстом */
+.prg p {
+    color: white;
+    font-size: 18px;
+    line-height: 1.5;
+    text-align: justify;
+    max-width: 1200px;
+    margin: 0 auto;
+    background-image: url(/assets/images/forest.jpg);
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    padding: 20px; /* Небольшие отступы для удобства чтения */
+}
+
+
+/* Правила для небольших экранов */
+@media screen and (max-width: 1200px) {
+    .prg p {
+        font-size: 16px; /* Уменьшаем размер шрифта */
+        background-size: contain; /* Сохраняем пропорциональный показ фона */
+    }
+}
+
+/* Правило для маленьких экранов */
+@media screen and (max-width: 600px) {
+    .prg p {
+        font-size: 14px; /* Еще меньше шрифт */
+        background-size: 100% 100%; /* Растягиваем фон полностью */
+    }
+}
+
+/* Оптимизация для телефонов */
+@media screen and (max-width: 400px) {
+    .prg p {
+        font-size: 12px; /* Очень мелкий шрифт */
+        background-size: cover; /* Закрываем всю область */
+    }
+}
+
+/* вращение цитаты */
+@keyframes rotateQuote {
+    from { transform: rotate(0deg); }
+    to   { transform: rotate(180deg); }
+}
