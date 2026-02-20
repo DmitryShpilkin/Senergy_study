@@ -1,0 +1,104 @@
+/* подключение шрифта через импорт */
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
+
+
+
+/* подключение скаченных шрифтов
+   важно: чтобы подключить курсив, надо использовать font-family: 'PlayfairDisplayItalic' и font-family: 'InterItalic'
+Обычный шрифт Playfair Display
+@font-face {
+    font-family: 'PlayfairDisplay';
+    src: url('./Playfair Display/PlayfairDisplay-VariableFont_wght.ttf') format('truetype');
+    font-weight: normal;  Нормальная толщина 
+    font-style: normal; Без наклона 
+}
+
+ Курсивный вариант Playfair Display 
+@font-face {
+    font-family: 'PlayfairDisplayItalic';
+    src: url('./Playfair Display/PlayfairDisplay-Italic-VariableFont_wght.ttf') format('truetype');
+    font-weight: normal; Нормальная толщина 
+    font-style: italic; Наклонный текст 
+}
+
+
+Обычный шрифт Inter 
+@font-face {
+    font-family: 'Inter';
+    src: url('./Inter/Inter-Italic-VariableFont_opsz,wght.ttf') format('truetype');
+    font-weight: normal;  Нормальная толщина 
+    font-style: normal;  Без наклона 
+}
+
+Курсивный вариант Playfair Display 
+@font-face {
+    font-family: 'InterItalic';
+    src: url('./Inter/Inter-VariableFont_opsz,wght.ttf') format('truetype');
+    font-weight: normal;  Нормальная толщина 
+    font-style: italic;  Наклонный текст 
+} */
+
+
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+/* весь текст страницы будет написан шрифтом Playfair Display */
+body {
+    font-family: "Playfair Display", serif;
+}
+
+/* заголовки будут написаны шрифтом Inter */
+h1 h2 h3 {
+    font-family: "Inter", sans-serif;
+}
+
+.color {
+    color: brown;
+    border: 1px solid #ccc;
+    padding: 20px;
+    box-shadow: 5px 5px 10px 5px rgba(0, 0, 0, 0.5);
+    text-shadow: 2px 4px 6px  rgba(0, 0, 0, 0.2);
+}
+
+.color p {
+    color: darkgreen;
+}
+
+.gradient {
+    background-image: linear-gradient(to right, yellow, green);
+    color: black;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.gradient h2 {
+    text-shadow: 2px 2px rgba(0, 0, 0, 0.3);
+}
+
+.image {
+    background-image: url("/assets/images/river.jpg");
+    background-size: cover;
+    background-repeat: no-repeat; /* без повторов */
+    background-position: center;  /* позиция по центру */
+    color: white;
+    padding: 20px;
+    min-height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.image h3 {
+    text-align: center;
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.image p {
+    max-width: 60%;
+    line-height: 1.6;
+}
