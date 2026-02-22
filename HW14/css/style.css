@@ -1,0 +1,217 @@
+/* Общие настройки: применяем сброс полей и внутренний padding для всего */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/* Настройки шрифта и фона */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #fafafa;
+    color: #333;
+}
+
+/* Стандартизация блочных элементов */
+section,
+aside,
+nav,
+header,
+footer,
+main {
+    display: block;
+}
+
+/* Главный контейнер страницы */
+.container {
+    max-width: 1200px;
+    /* Ограничиваем ширину контейнера */
+    margin: 0 auto;
+    /* Центруем по горизонтали */
+    padding: 1em;
+    /* Внутренний отступ вокруг контента */
+}
+
+/* Шапка страницы */
+header {
+    background-color: #ffd700;
+    /* Цвет фона жёлтый */
+    padding: 1em;
+    /* Внешняя рамка */
+    text-align: center;
+    /* Центрирование текста */
+}
+
+/* Горизонтальная навигация */
+nav ul {
+    list-style: none;
+    /* Без маркеров списка */
+    display: flex;
+    /* Используйте Flexbox для распределения пунктов */
+    justify-content: space-between;
+    padding: 0;
+    margin: 0;
+}
+
+nav li {
+    margin: 0 1em;
+    /* Пространство между пунктами */
+}
+
+nav a {
+    color: #fff;
+    /* Белый цвет ссылок */
+    text-decoration: none;
+    /* Нет подчёркивания */
+}
+
+/* Основная секция с контентом */
+main {
+    display: flex;
+    /* Используем Flexbox для организации статей */
+    flex-wrap: wrap;
+    /* Перенос строк при недостаточном пространстве */
+    justify-content: space-between;
+}
+
+article {
+    flex: 1 1 300px;
+    /* Каждый блок занимает минимум 300px и растёт равномерно */
+    margin: 1em;
+    /* Межблоковые интервалы */
+    padding: 1em;
+    /* Внутреннее расстояние от границ */
+    background-color: #ffffff;
+    /* Белый фон статей */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, .1);
+    /* Тень для эффекта глубины */
+}
+
+/* Нижний колонтитул */
+footer {
+    background-color: #ffd700;
+    /* Жёлтый фон футера */
+    padding: 1em;
+    /* Рамка */
+    text-align: center;
+    /* Центрирование текста */
+}
+
+/* Работа с изображениями */
+img {
+    max-width: 100%;
+    /* Автоматическое масштабирование */
+    height: auto;
+    /* Сохранение пропорций */
+    display: block;
+    /* Чёткое позиционирование */
+}
+
+/* Мобильная версия сайта */
+@media (max-width: 768px) {
+    nav ul {
+        flex-direction: column;
+        /* Меню переходит в столбец */
+        align-items: center;
+        /* Центральное размещение пунктов */
+    }
+
+    nav li {
+        margin: 0.5em 0;
+        /* Промежутки между пунктами становятся меньшими */
+    }
+
+    h1,
+    h2 {
+        font-size: 1.5em;
+        /* Размер шрифта заголовков сокращён */
+    }
+}
+
+/* Ещё больше суженный экран (до 480px) */
+@media (max-width: 480px) {
+    body {
+        background-color: #efefef;
+        /* Меняется фон страницы */
+    }
+
+    main>article {
+        margin: 0;
+        /* Боковые поля убираем */
+        padding: 1em;
+        /* Оставляем внутреннее расстояние */
+    }
+}
+
+/* Обработка случаев с поворотом экрана ("Landscape") */
+@media (orientation: landscape) {
+    nav ul {
+        flex-direction: row;
+        /* Возвращаемся к горизонтальному виду меню */
+        justify-content: space-around;
+    }
+}
+
+/* Реализация меню-гамбургера */
+.hamburger-icon {
+    display: none;
+    /* Изначально скрыто */
+    cursor: pointer;
+    /* Курсор превращается в руку */
+    font-size: 2em;
+    /* Большой символ меню */
+    color: #fff;
+    /* Белым цветом */
+}
+
+.hamburger-menu {
+    display: none;
+    /* Изначально спрятано */
+    position: fixed;
+    /* Абсолютное положение */
+    top: 0;
+    /* Наверху экрана */
+    left: 0;
+    /* Слева экрана */
+    width: 100%;
+    /* Заполняет весь экран */
+    height: 100%;
+    /* Высота равна высоте экрана */
+    background-color: rgba(0, 0, 0, 0.8);
+    /* Прозрачность */
+    z-index: 1000;
+    /* Поверх остальных элементов */
+}
+
+.hamburger-menu ul {
+    list-style: none;
+    /* Нет маркировки списков */
+    padding: 2em;
+    /* Расстояние от краёв */
+}
+
+.hamburger-menu li {
+    margin-bottom: 1em;
+    /* Интервал между пунктами */
+}
+
+/* Элементы управления меню */
+input[type='checkbox'] {
+    display: none;
+    /* Прячем чекбокс */
+}
+
+
+
+/* На малых экранах показываем значок гамбургера */
+@media (max-width: 768px) {
+    .hamburger-icon {
+        display: block;
+        /* Появляется значок гамбургера */
+    }
+
+    nav ul {
+        display: none;
+        /* Исходное меню прячется */
+    }
+}
