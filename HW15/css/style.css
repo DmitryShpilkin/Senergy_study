@@ -1,0 +1,224 @@
+/* Общие стили */
+* {
+    box-sizing: border-box;
+    /* Включаем границы и отступы в ширину элементов */
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    /* Удаляем стандартные отступы браузера */
+    font-family: Arial, Helvetica, sans-serif;
+    /* Установка шрифта */
+}
+
+/* Основной контейнер для сложного макета */
+.container-difficult {
+    display: flex;
+    /* Активируем Flexbox */
+    flex-wrap: wrap;
+    /* Разрешаем перенос элементов */
+    justify-content: space-between;
+    /* Распределение свободного места между элементами */
+    padding: 10px;
+    /* Небольшие отступы */
+}
+
+/* Оформление областей */
+.header,
+.navigation,
+.content {
+    padding: 20px;
+    /* Внутренние отступы */
+    border-radius: 8px;
+    /* Округлые углы */
+    background-color: #f0f0f0;
+    /* Серый фон */
+    margin: 10px;
+    /* Наружные отступы */
+}
+
+/* По умолчанию создадим горизонтальную компоновку */
+.header {
+    flex: 1 1 100%;
+    /* Занимает всю строку */
+    /*чтобы при уменьшении ширины экрана (менее 768px) разместить заголовок первым*/
+    order: 1;
+    /* Порядок вывода */
+}
+
+.navigation {
+    flex: 1 1 30%;
+    /* Занимает около трети экрана */
+    /*чтобы при уменьшении ширины экрана (менее 768px) разместить навигацию второй*/
+    order: 2;
+    /* Расположим вторым */
+}
+
+.content {
+    flex: 1 1 60%;
+    /* Занимает примерно две трети экрана */
+    /*чтобы при уменьшении ширины экрана (менее 768px) разместить разместить контент третьим*/
+    order: 3;
+    /* Третье место */
+}
+
+/* Адаптивность: переключение на вертикальную компоновку при маленькой ширине */
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column;
+        /* Элементы располагаются сверху вниз */
+    }
+
+    .header,
+    .navigation,
+    .content {
+        flex: 1 1 100%;
+        /* Все элементы занимают полную ширину экрана */
+    }
+
+    /* Перемещаем навигацию под заголовок, а контент оставляем последним */
+    .navigation {
+        order: 2;
+        /* Меняем порядок на второе место */
+    }
+
+    .content {
+        order: 3;
+        /* Оставляем контент третьим */
+    }
+}
+
+
+
+/* Контейнер для основного задания */
+.container {
+    display: flex; /* Активация Flexbox */
+    flex-wrap: wrap; /* Разрешаем перенос элементов */
+    justify-content: space-between; /* Распределение свободного пространства */
+    padding: 10px;
+    background-color: lightgray; /* Цвет фона контейнера */
+    margin-bottom: 20px; /* Отделяем контейнеры друг от друга */
+}
+
+/* Оформление дочерних элементов */
+.item {
+    width: 100px; /* Ширина элементов */
+    height: 100px; /* Высота элементов */
+    background-color: dodgerblue; /* Цвет фона элементов */
+    color: white; /* Цвет текста */
+    display: flex;
+    justify-content: center; /* Выравнивание текста по центру */
+    align-items: center; /* Выравнивание текста по центру */
+    font-weight: bold;
+    margin: 5px;
+}
+
+/* Основной контейнер (без экспериментов) */
+.container.main {
+    justify-content: space-between; /* Распространённое распределение элементов */
+    align-items: center; /* Центрируем элементы по вертикали */
+}
+
+/* Эксперимент с justify-content и align-items */
+.container.exp-jc-space-around {
+    justify-content: space-around; /* Равномерное распределение элементов */
+}
+
+.container.exp-al-center {
+    align-items: center; /* Вертикальное выравнивание элементов по центру */
+}
+
+.container.exp-flex-dir-row {
+    flex-direction: row; /* Горизонтальная компоновка */
+}
+
+.container.exp-flex-dir-col {
+    flex-direction: column; /* Вертикальная компоновка */
+}
+
+/* Дополнительные эксперименты */
+.container.exp-jc-stretch {
+    justify-content: stretch; /* Растягивание элементов на всю ширину */
+}
+
+.container.exp-jc-space-between {
+    justify-content: space-between; /* Равномерное распределение с промежутками */
+}
+
+.container.exp-al-baseline {
+    align-items: baseline; /* Выравнивание по базовой линии текста */
+}
+
+.container.exp-flex-wrap {
+    flex-wrap: wrap; /* Перенос элементов на новую строку */
+}
+
+.container.exp-order {
+    .item:nth-child(1) { order: 3; } /* Меняем порядок элементов */
+    .item:nth-child(2) { order: 1; }
+    .item:nth-child(3) { order: 2; }
+}
+
+/* Подсветка различий в экспериментах */
+.item.highlighted {
+    background-color: red; /* Выделяем элементы ярким цветом */
+}
+
+/* Изменение направления компоновки */
+@media (max-width: 768px) {
+      .container-main {
+          flex-direction: column; /* Превращаем в вертикальную компоновку */
+      }
+}
+
+
+
+/* Контейнер для показа свойств */
+.container-features {
+      display: flex; /* Активация Flexbox */
+      flex-wrap: wrap; /* Разрешаем перенос элементов */
+      justify-content: space-between; /* Распределение свободного пространства */
+      padding: 10px;
+      background-color: lightgray; /* Цвет фона контейнера */
+}
+
+/* Оформление дочерних элементов */
+.item {
+      width: 100px; /* Ширина элементов */
+      height: 100px; /* Высота элементов */
+      background-color: dodgerblue; /* Цвет фона элементов */
+      color: white; /* Цвет текста */
+      display: flex;
+      justify-content: center; /* Выравнивание текста по центру */
+      align-items: center; /* Выравнивание текста по центру */
+      font-weight: bold;
+      margin: 5px;
+}
+
+/* Демонстрация flex-grow */
+.grow {
+      flex-grow: 1; /* Способность элемента расти */
+}
+
+/* Демонстрация flex-shrink */
+.shrink {
+      flex-shrink: 1; /* Способность элемента сжиматься */
+}
+
+/* Демонстрация flex-basis */
+.basis {
+      flex-basis: 200px; /* Начальный размер элемента */
+}
+
+/* Пример комбинированного использования */
+.flexible {
+      flex: 1 1 150px; /* Группирует flex-grow, flex-shrink и flex-basis */
+}
+
+/* Наблюдение за эффектом flex-wrap */
+@media (max-width: 768px) {
+      .container {
+          flex-wrap: wrap; /* Элементы переходят на новую строку */
+      }
+}

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+
+    <title>Flexbox</title>
+</head>
+
+<body>
+
+    <!-- Сложный макет -->
+    <div class="container-difficult">
+        <!-- Верхняя часть: заголовок страницы -->
+        <div class="header">
+            <h1>Домашнее задание к уроку Flexbox</h1>
+            <p>Приветствуем вас на сайте!</p>
+        </div>
+        <!-- Левая сторона: навигационные ссылки -->
+        <div class="navigation">
+            <h2>Навигация</h2>
+            <ul>
+                <li><a href="#">Главная</a></li>
+                <li><a href="#">О нас</a></li>
+                <li><a href="#">Контакты</a></li>
+            </ul>
+        </div>
+        <!-- Правая сторона: основной контент -->
+        <div class="content">
+            <h2>Основной контент</h2>
+            <p>Здесь расположена важная информация и материалы.</p>
+        </div>
+    </div>
+
+    <!-- Основное задание -->
+
+    <div class="container main">
+        <!-- Первый дочерний элемент -->
+        <div class="item item1">Item 1</div>
+        <!-- Второй дочерний элемент -->
+        <div class="item item2">Item 2</div>
+        <!-- Третий дочерний элемент -->
+        <div class="item item3">Item 3</div>
+    </div>
+
+    <!-- Начинаем экспериментировать с разными классами -->
+    <hr />
+    <h2>Эксперименты с Flexbox:</h2>
+
+    <!-- Равномерное распределение элементов -->
+
+    <div class="container exp-jc-space-around">
+        <div class="item">Space Around</div>
+        <div class="item">Element</div>
+        <div class="item">Example</div>
+    </div>
+
+    <!-- Вертикальное выравнивание элементов -->
+    <div class="container exp-al-center">
+        <div class="item">Align Center</div>
+        <div class="item">Vertical Alignment</div>
+        <div class="item">Experiment</div>
+    </div>
+
+    <!-- Горизонтальная компоновка -->
+    <div class="container exp-flex-dir-row">
+        <div class="item">Row Direction</div>
+        <div class="item">Horizontal Layout</div>
+        <div class="item">Demo</div>
+    </div>
+
+    <!-- Вертикальная компоновка -->
+    <div class="container exp-flex-dir-col">
+        <div class="item">Column Direction</div>
+        <div class="item">Vertical Layout</div>
+        <div class="item">Test</div>
+    </div>
+
+
+
+
+    <!-- Использование свойств -->
+    <div class="container-features">
+        <!-- Дочерние элементы -->
+        <div class="item grow">Grow Item</div>
+        <div class="item shrink">Shrink Item</div>
+        <div class="item basis">Basis Item</div>
+        <div class="item flexible">Flexible Item</div>
+    </div>
+
+</body>
+
+</html>
