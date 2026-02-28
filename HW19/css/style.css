@@ -1,0 +1,188 @@
+/* Переходы */
+/* Стили основной кнопки */
+#color-button {
+    background-color: #007bff;
+    /* Начальный цвет фона */
+    color: white;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    outline: none;
+    border: none;
+    transition: background-color 0.5s ease, transform 0.3s ease;
+    /* Переходы цвета и трансформации */
+}
+
+#color-button:hover {
+    /* Изменения при наведении */
+    background-color: #dc3545;
+    /* Красный цвет фона */
+    transform: scale(1.1);
+    /* Увеличиваем размер на 10% */
+}
+
+/* Стили масштабируемого блока */
+.scalable-box {
+    width: 150px;
+    height: 150px;
+    background-color: green;
+    margin-top: 20px;
+    transition: all 0.5s ease-in-out;
+    /* Общий плавный переход всех изменений */
+}
+
+.scalable-box:hover {
+    /* Действия при наведении */
+    transform: scale(1.2);
+    /* Увеличиваем блок на 20% */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    /* Добавляем легкую тень */
+}
+
+/* Элемент с изменением прозрачности */
+.fading-text {
+    padding: 10px 20px;
+    background-color: purple;
+    color: white;
+    transition: opacity 0.5s linear;
+    /* Плавное изменение прозрачности */
+}
+
+.fading-text:hover {
+    /* Изменяем прозрачность при наведении */
+    opacity: 0.5;
+    /* Полупрозрачный вид */
+}
+
+
+
+/* Анимации с ключевыми кадрами */
+/* Анимация пульсации кнопки */
+.pulsing-button {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    outline: none;
+    border: none;
+    animation: pulse 1.5s infinite alternate;
+    /* Повторяющаяся анимация */
+}
+
+@keyframes pulse {
+    from {
+        transform: scale(1);
+        /* Исходный размер */
+    }
+
+    to {
+        transform: scale(1.1);
+        /* Увеличенный размер */
+    }
+}
+
+/* Анимация перемещения элемента слева направо */
+.moving-element {
+    width: 100px;
+    height: 100px;
+    background-color: green;
+    position: relative;
+    left: 0;
+    animation: move-horizontal 4s infinite alternate;
+    /* Перемещение туда-обратно */
+}
+
+@keyframes move-horizontal {
+    from {
+        transform: translateX(0);
+        /* Начало пути */
+    }
+
+    to {
+        transform: translateX(calc(100vw - 100px));
+        /* Конец пути (правая сторона окна минус ширина элемента) */
+    }
+}
+
+/* Циклическое изменение цвета блока */
+.color-changing-block {
+    width: 150px;
+    height: 150px;
+    background-color: green;
+    animation: changeColor 3s infinite alternate;
+    /* Постоянное повторение смены цветов */
+}
+
+@keyframes changeColor {
+
+    0%,
+    100% {
+        background-color: green;
+        /* Зеленый цвет */
+    }
+
+    50% {
+        background-color: red;
+        /* Красный цвет */
+    }
+}
+
+
+
+/* Дополнительное задание */
+/* Общие настройки контейнера */
+.loader {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    gap: 10px;
+    /* Расстояние между элементами */
+}
+
+/* Общая настройка точек */
+.loader>div {
+    width: 15px;
+    height: 15px;
+    background-color: #fff;
+    border-radius: 50%;
+    animation: loadingAnimation 1.2s cubic-bezier(.2, .68, .18, 1.08) infinite both;
+}
+
+/* Последовательная задержка начала анимации для каждой точки */
+.loader>div:nth-child(1) {
+    animation-delay: -0.36s;
+}
+
+.loader>div:nth-child(2) {
+    animation-delay: -0.24s;
+}
+
+.loader>div:nth-child(3) {
+    animation-delay: -0.12s;
+}
+
+.loader>div:nth-child(4) {
+    animation-delay: 0s;
+}
+
+/* Ключевые кадры для самой анимации */
+@keyframes loadingAnimation {
+    0% {
+        transform: scale(1);
+        opacity: 1;
+    }
+
+    50% {
+        transform: scale(0.6);
+        opacity: 0.3;
+    }
+
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
