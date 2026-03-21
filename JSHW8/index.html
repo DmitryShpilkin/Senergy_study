@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Загрузка скрипта с колбэком</title>
+    <!-- Подключение CSS-файла -->
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <h1>Загрузка внешнего скрипта</h1>
+    <div id="message" style="margin-top: 20px;"></div>
+
+    <script>
+        // Функция для динамической загрузки внешнего JS-файла
+        function loadScript(src, callbackSuccess, callbackError) {
+            // 1. Создаем стандартный элемент <script>
+            const script = document.createElement('script');
+            script.src = src;
+            script.async = true; // Скрипт будет загружаться асинхронно
+
+            // 2. Колбэк при успешной загрузке и выполнении
+            script.onload = function() {
+                console.log('Скрипт загружен:', src);
+                if (typeof callbackSuccess === 'function') {
+                    callbackSuccess();
+                }
+            };
+
+            // 3. Колбэк при ошибке загрузки (например, файл не найден)
+            script.onerror = function() {
+                const errorMsg = `❌ Ошибка: Не удалось загрузить скрипт по адресу ${src}`;
+                console.error(errorMsg);
+                if (typeof callbackError === 'function') {
+                    callbackError(errorMsg);
+                }
+            };
+
+            // 4. Добавляем созданный элемент в секцию <head>
+            document.head.appendChild(script);
+        }
+
+        // Колбэк-функция, которая сработает при успехе
+        function onScriptLoaded() {
+            document.getElementById('message').innerHTML = 
+                '<p style="color: green; font-weight: bold;">✅ Скрипт успешно загружен и выполнен!</p>';
+        }
+
+        // Колбэк-функция, которая сработает при ошибке
+        function onScriptError(errorMessage) {
+            document.getElementById('message').innerHTML = 
+                `<p style="color: red; font-weight: bold;">${errorMessage}</p>`;
+        }
+
+        // Запускаем загрузку внешнего файла.
+        loadScript('scripts/myScript.js', onScriptLoaded, onScriptError);
+    </script>
+</body>
+</html>
