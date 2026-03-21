@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Подключение скриптов через Promise</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <h1>Последовательная загрузка скриптов</h1>
+    <div id="status"></div>
+
+    <script>
+        /**
+         * Функция для динамической загрузки скрипта, возвращающая Promise.
+         * @param {string} src - Путь к файлу скрипта.
+         * @returns {Promise} - Резолвится при успешной загрузке, реджектится при ошибке.
+         */
+        function loadScript(src) {
+            return new Promise(function(resolve, reject) {
+                const script = document.createElement('script');
+                script.src = src;
+                script.async = true; // Загрузка асинхронная, но выполнение будет последовательным
+
+                script.onload = function() {
+                    resolve(src); // Скрипт загружен и выполнен успешно
+                };
+
+                script.onerror = function() {
+                    reject(new Error(`Ошибка загрузки скрипта: ${src}`)); // Скрипт не найден или ошибка сети
+                };
+
+                document.head.appendChild(script);
+            });
+        }
+
+        // Массив путей к скриптам в нужном порядке
+        const scriptsToLoad = [
+            'scripts/myScript.js',
+            'scripts/script1.js',
+            'scripts/script2.js'
+        ];
+
+        const statusDiv = document.getElementById('status');
+        let currentIndex = 0;
+
+        /**
+         * Рекурсивная функция для последовательной загрузки.
+         * Использует .then() и .catch() для обработки цепочки.
+         */
+        function loadNext() {
+            if (currentIndex >= scriptsToLoad.length) {
+                statusDiv.innerHTML += `<p style="color: green;">✅ Все скрипты загружены!</p>`;
+                return;
+            }
+
+            const currentSrc = scriptsToLoad[currentIndex];
+            statusDiv.innerHTML += `<p>🔄 Загрузка: ${currentSrc}</p>`;
+
+            loadScript(currentSrc)
+                .then(function(src) {
+                    statusDiv.innerHTML += `<p style="color: green;">✅ Успешно: ${src}</p>`;
+                    currentIndex++;
+                    loadNext(); // Загружаем следующий скрипт
+                })
+                .catch(function(error) {
+                    statusDiv.innerHTML += `<p style="color: red;">❌ Ошибка: ${error.message}</p>`;
+                    // Можно прервать цепочку или продолжить с остальными
+                    currentIndex++;
+                    loadNext();
+                });
+        }
+
+        // Запускаем процесс загрузки первого скрипта
+        loadNext();
+    </script>
+</body>
+</html>
