@@ -1,0 +1,182 @@
+<!doctype html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>IndexedDB</title>
+</head>
+
+<body>
+    <h1>Работа с IndexedDB (CRUD)</h1>
+    <p>Откройте консоль разработчика (F12), чтобы увидеть процесс.</p>
+
+    <script>
+        // --- ГЛОБАЛЬНЫЕ ПЕРЕМЕННЫЕ ---
+        // Переменная для хранения ссылки на открытую базу данных.
+        // Она будет доступна во всех функциях.
+        let db;
+
+        // Константа с ID пользователя, которого мы хотим удалить.
+        const ID_TO_DELETE = 2;
+
+
+        // --- ОТКРЫТИЕ ИЛИ СОЗДАНИЕ БАЗЫ ДАННЫХ ---
+        // Создаем запрос на открытие (или создание) базы данных с именем "MyDatabase" версии 1.
+        // Если базы не существует, она будет создана.
+        // Если версия больше существующей, сработает событие onupgradeneeded.
+        let request = indexedDB.open("MyDatabase", 1);
+
+        // --- СОЗДАНИЕ СТРУКТУРЫ БД (СОБЫТИЕ onupgradeneeded) ---
+        // Это событие срабатывает только 1 раз: при первом создании БД или при изменении её версии.
+        request.onupgradeneeded = function (event) {
+            // Получаем ссылку на объект базы данных из события.
+            db = event.target.result;
+            console.log("База данных создана или обновлена.");
+
+            // Создаем "хранилище объектов" (Object Store) с названием "Users".
+            // Это аналог таблицы в SQL.
+            // Параметры:
+            //   keyPath: "id" — указываем, что поле 'id' будет уникальным ключом записи.
+            //   autoIncrement: true — браузер сам будет назначать id (1, 2, 3...).
+            let objectStore = db.createObjectStore("Users", { keyPath: "id", autoIncrement: true });
+
+            // Создаем индексы для быстрого поиска по полям "name" и "email".
+            // Индекс по email сделан уникальным, чтобы нельзя было зарегистрировать два аккаунта на одну почту.
+            objectStore.createIndex("name", "name", { unique: false });
+            objectStore.createIndex("email", "email", { unique: true });
+        };
+
+        // --- УСПЕШНОЕ ОТКРЫТИЕ БД (СОБЫТИЕ onsuccess) ---
+        // Это событие срабатывает каждый раз, когда база данных открывается успешно.
+        request.onsuccess = function (event) {
+            // Сохраняем ссылку на открытую БД в глобальную переменную.
+            db = event.target.result;
+            console.log("База данных открыта.");
+
+            // Начинаем логику работы: сначала добавляем данные.
+            addData();
+        };
+
+        // --- ОБРАБОТКА ОШИБОК ОТКРЫТИЯ БД ---
+        request.onerror = function (event) {
+            console.error("Ошибка при открытии БД:", event.target.errorCode);
+        };
+
+
+        // --- ФУНКЦИЯ ДОБАВЛЕНИЯ ДАННЫХ ---
+        function addData() {
+            console.log("--- 1. Добавление данных ---");
+
+            // Создаем транзакцию (операцию).
+            // ["Users"] — указываем, с каким хранилищем работаем.
+            // "readwrite" — режим доступа: чтение и запись (нам нужно записывать).
+            let transaction = db.transaction(["Users"], "readwrite");
+
+            // Получаем доступ к самому хранилищу объектов из транзакции.
+            let store = transaction.objectStore("Users");
+
+            // Массив объектов пользователей, которые мы хотим добавить в БД.
+            let users = [
+                { name: "Alice", age: 25, email: "alice@example.com" },
+                { name: "Bob", age: 30, email: "bob@example.com" },
+                { name: "Charlie", age: 35, email: "charlie@example.com" }
+            ];
+
+            // Перебираем массив и добавляем каждого пользователя в хранилище.
+            users.forEach(user => store.add(user));
+
+            // Событие transaction.oncomplete срабатывает, когда ВСЕ запросы внутри транзакции выполнены.
+            transaction.oncomplete = () => {
+                console.log("Данные добавлены.");
+                console.log("--- 2. Чтение данных после добавления ---");
+
+                // Закрываем текущее соединение с БД после записи,
+                // чтобы потом открыть его заново для чтения (это хорошая практика).
+                db.close();
+
+                // Вызываем функцию для открытия БД и запуска процесса чтения.
+                openAndRead();
+            };
+        }
+
+
+        // --- ФУНКЦИЯ ИЗВЛЕЧЕНИЯ ДАННЫХ ---
+        function getData(callback) {
+            // Создаем транзакцию в режиме "readonly" (только чтение).
+            let transaction = db.transaction(["Users"], "readonly");
+
+            // Получаем доступ к хранилищу объектов.
+            let store = transaction.objectStore("Users");
+
+            console.log("Текущие данные в хранилище:");
+
+            // Используем курсор для перебора всех записей в хранилище.
+            store.openCursor().onsuccess = function (event) {
+                // event.target.result содержит объект курсора или null, если записи закончились.
+                let cursor = event.target.result;
+
+                if (cursor) {
+                    // Если курсор существует, выводим данные в консоль:
+                    // cursor.key — это ID записи (число).
+                    // cursor.value — это сам объект с данными пользователя (JSON).
+                    console.log(`ID: ${cursor.key} | Данные:`, cursor.value);
+                    cursor.continue(); // Переходим к следующей записи.
+                } else {
+                    // Если курсор null, значит все записи прочитаны.
+                    console.log("Все записи прочитаны.");
+
+                    // Если была передана функция обратного вызова (callback), вызываем её.
+                    // Это позволяет выполнять код после завершения чтения (например, удаление).
+                    if (callback) callback();
+                }
+            };
+        }
+
+
+        // --- ФУНКЦИЯ: УДАЛЕНИЕ ДАННЫХ ПО КЛЮЧУ ---
+        function deleteDataByKey(key) {
+            console.log(`--- 3. Удаление записи с ID = ${key} ---`);
+
+            // Создаем новую транзакцию в режиме "readwrite", так как мы будем удалять данные.
+            let transaction = db.transaction(["Users"], "readwrite");
+
+            // Получаем доступ к хранилищу объектов для удаления.
+            let store = transaction.objectStore("Users");
+
+            // Метод delete(key) отправляет запрос на удаление записи с указанным ключом (ID).
+            let request = store.delete(key);
+
+            request.onsuccess = () => {
+                console.log(`Запись с ID ${key} успешно удалена.`);
+                console.log("--- 4. Чтение данных после удаления ---");
+
+                // После удаления читаем данные снова, чтобы убедиться в результате.
+                getData(() => {
+                    db.close(); // Закрываем соединение в самом конце работы скрипта.
+                    console.log("Скрипт завершен. Соединение с БД закрыто.");
+                });
+            };
+
+            request.onerror = () => {
+                console.error(`Ошибка при удалении записи с ID ${key}:`, request.error);
+            };
+        }
+
+
+        // --- ВСПОМОГАТЕЛЬНАЯ ФУНКЦИЯ ДЛЯ ПОСЛЕДОВАТЕЛЬНОСТИ ---
+        function openAndRead() {
+            // Открываем базу данных заново для операции чтения.
+            let requestRead = indexedDB.open("MyDatabase", 1);
+
+            requestRead.onsuccess = function (event) {
+                db = event.target.result;
+                // Читаем данные и передаем функцию deleteDataByKey как callback,
+                // чтобы удаление началось сразу после окончания чтения.
+                getData(() => deleteDataByKey(ID_TO_DELETE));
+            };
+        }
+    </script>
+</body>
+
+</html>
