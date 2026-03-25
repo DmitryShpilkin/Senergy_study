@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Создание Cookie</title>
+
+    <!--скрипт стоит в <head>, потому что он выполняет фоновую задачу (установка cookie),
+     которая должна быть завершена как можно раньше, но при этом не требует наличия отрисованных элементов на странице-->
+    <script>
+        // Функция для установки cookie
+        // Принимает: имя cookie, значение и срок жизни в днях
+        function setCookie(name, value, days) {
+            // Создаём объект Date для расчёта даты истечения срока
+            const date = new Date();
+            // Устанавливаем новую дату: текущая дата + количество дней (в миллисекундах)
+            date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+            // Формируем строку с датой истечения срока в формате UTC
+            const expires = "expires=" + date.toUTCString();
+            // Записываем cookie в браузер
+            // name=value; expires=дата; path=/ — путь, по которому cookie доступна
+            document.cookie = name + "=" + value + ";" + expires + ";path=/";
+        }
+
+        // Действие при полной загрузке страницы
+        window.onload = function() {
+            // Вызываем функцию установки cookie
+            // user — имя, Ivan — значение, 365 — срок жизни в днях (1 год)
+            setCookie("user", "Ivan", 365);
+            // Выводим уведомление пользователю
+            alert("Cookie успешно создана! Срок жизни — 1 год.");
+        };
+    </script>
+</head>
+<body>
+    <h1>Пример создания cookie со сроком жизни 1 год</h1>
+    <p>Откройте консоль разработчика (F12 → Application → Cookies), чтобы увидеть созданную cookie.</p>
+</body>
+</html>
